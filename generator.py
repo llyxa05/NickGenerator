@@ -1,12 +1,19 @@
 import random
 import string
+import sys
 
 def random_string(length):
     letters = string.ascii_letters
-    result_str = ''.join(random.choice(letters) for i in range(length))
-    return result_str
+    return ''.join(random.choice(letters) for i in range(length))
 
-#generate 100 lines
-for _ in range(100):
-    length = random.randint(4, 15)
-    print(random_string(length))
+def generate_nicknames(count):
+    for _ in range(count):
+        length = random.randint(4, 15)
+        print(random_string(length))
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("NickGen: python3 generator.py 10")
+    else:
+        count = int(sys.argv[1])
+        generate_nicknames(count)
